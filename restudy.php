@@ -131,45 +131,54 @@ $figure['key'] = $figure['key'] ?? 2;
  * 301 Redirect
  */
 
- /**
-  * apache  ログの出力
-  * Loglevel,ErrorLog,CustomLog,LogFormat
-  * Loglevel → エラー出力の詳細度を指定　error > warn > debug
-  * ErrorLog → エラーログの出力先パス
-  * LogFormat → ログの出力内容について指定できる。
-  * CustomLog → LogFormatで設定した内容を特定のログファイルにパスを用いて適用させる。
-  *
-  * Rewriterule (ディレクトリ)
-  * RewriteEngine を Onに設定してあげる必要がある。
-  * redirectではブラウザとサーバー間でやりとりがあったが、こちらではapache内部で処理を行うのでパスの表記は変わらん
-  * RewriteRule rewrite-test/index.html - [F]    → 対象のディレクトリに設定だけ追記することも可能。(Forbiddenでアクセスを禁止)
-  *
-  * RewriteCond  RewriteRuleの検索範囲の詳細度を高めたもの(直下のRewriteRuleにのみ適用される。)
-  * その１
-  * RewriteCond %{HTTTP_HOST} localhost
-  * RewriteRule rewrite-test/imgs/(\d{3}).jpg imgs/$1.png
-  * その２
-  * ReriteEngine On
-  * RewriteBase apache/rewrite-test/
-  * RewriteCond %{QUERY_STRING}} P=(.+)
-  * RewriteRule rewrite-test/sub1 sub1/%1?
-  * queryはURLの末尾に?から始めることで付与できる。
-  * また、後方参照で読み込んだでのURLはそのままだと末尾にqueryが付き無限ループしてしまうので、文末に?を置き最終盤URLと認識させる
-  *
-  * その３
-  * RewriteCond %{HTTP_ACCEPT} image/webp
-  * RewriteCond /Applications/MAMP/htdocs/fullstack-webdev/070_Apacheの基礎/rewrite-test/imgs/$1.webp -f
-  * RewriteCond /?imgs/(.*)\.(jpg?|png) imgs/$1.webp
-  */
+/**
+ * apache  ログの出力
+ * Loglevel,ErrorLog,CustomLog,LogFormat
+ * Loglevel → エラー出力の詳細度を指定　error > warn > debug
+ * ErrorLog → エラーログの出力先パス
+ * LogFormat → ログの出力内容について指定できる。
+ * CustomLog → LogFormatで設定した内容を特定のログファイルにパスを用いて適用させる。
+ *
+ * Rewriterule (ディレクトリ)
+ * RewriteEngine を Onに設定してあげる必要がある。
+ * redirectではブラウザとサーバー間でやりとりがあったが、こちらではapache内部で処理を行うのでパスの表記は変わらん
+ * RewriteRule rewrite-test/index.html - [F]    → 対象のディレクトリに設定だけ追記することも可能。(Forbiddenでアクセスを禁止)
+ *
+ * RewriteCond  RewriteRuleの検索範囲の詳細度を高めたもの(直下のRewriteRuleにのみ適用される。)
+ * その１
+ * RewriteCond %{HTTTP_HOST} localhost
+ * RewriteRule rewrite-test/imgs/(\d{3}).jpg imgs/$1.png
+ * その２
+ * ReriteEngine On
+ * RewriteBase apache/rewrite-test/
+ * RewriteCond %{QUERY_STRING}} P=(.+)
+ * RewriteRule rewrite-test/sub1 sub1/%1?
+ * queryはURLの末尾に?から始めることで付与できる。
+ * また、後方参照で読み込んだでのURLはそのままだと末尾にqueryが付き無限ループしてしまうので、文末に?を置き最終盤URLと認識させる
+ *
+ * その３
+ * RewriteCond %{HTTP_ACCEPT} image/webp
+ * RewriteCond /Applications/MAMP/htdocs/fullstack-webdev/070_Apacheの基礎/rewrite-test/imgs/$1.webp -f
+ * RewriteCond /?imgs/(.*)\.(jpg?|png) imgs/$1.webp
+ */
 
- /**
-  * データベース
-  * 表形式でのデータ管理が主流となっている。
-  * 個々のデータを識別するために、主キーPKの概念がある。これは、変化しない値が良いとされている。
-  * 複合キーで値を設定する場合には、外部キーFKとして別テーブルにて管理するのがよい(第三正規化まで)。(→ データを取得する場合には表を結合するjointを行う)
-  *
-  * テーブル設計
-  * 第一正規化   テーブル内の要素を一行ごとに設定し、主キーとなるものを選定する。
-  * 第二正規化   主キーに従属する属性、部分関数従属を別テーブルにて紐づける。外部キー設定。
-  * 第三正規化   主キー以外に従属する属性、推移的関数従属を別テーブルにて紐づける。基本ここまでで正規化は終了する。
-  */
+/**
+ * データベース
+ * 表形式でのデータ管理が主流となっている。
+ * 個々のデータを識別するために、主キーPKの概念がある。これは、変化しない値が良いとされている。
+ * 複合キーで値を設定する場合には、外部キーFKとして別テーブルにて管理するのがよい(第三正規化まで)。(→ データを取得する場合には表を結合するjointを行う)
+ *
+ * テーブル設計
+ * 第一正規化   テーブル内の要素を一行ごとに設定し、主キーとなるものを選定する。
+ * 第二正規化   主キーに従属する属性、部分関数従属を別テーブルにて紐づける。外部キー設定。
+ * 第三正規化   主キー以外に従属する属性、推移的関数従属を別テーブルにて紐づける。基本ここまでで正規化は終了する。
+ *
+ * ER図
+ * テーブル間の関係性を可視化するために用いる図
+ * ＋--○< のような記号でテーブル同士の関係性を表記していく
+ *
+ * データ操作実践
+ * 大きくDDLとDMLに大別できる
+ * DDL  データ定義言語の略で、DBオブジェクトデータベースに関わる要素の定義を行う際に用いる
+ * DML  データ操作言語の略で、データテーブルを操作する際に使用する
+ */
