@@ -181,4 +181,28 @@ $figure['key'] = $figure['key'] ?? 2;
  * 大きくDDLとDMLに大別できる
  * DDL  データ定義言語の略で、DBオブジェクトデータベースに関わる要素の定義を行う際に用いる
  * DML  データ操作言語の略で、データテーブルを操作する際に使用する
+ *
+ * create / drop database
+ * ctrl / option enter  単一/複数　SQLを実行
+ * テーブル作成
+ * create table test_db.test_table (
+ * id int(6) not null unsigned default 0 comment 'ID'
+ * カラム　型　　　　　　 　　　制約　　　　　　 　値の性質　　　　　　初期値　　　　　　　　　　　コメント);
+ *
+ * テーブルの確認
+ * desc / show full colums from / show create table テーブル名
+ * アクティブDBの切り替え
+ * use test_db;  select database()
+ * カラムへの制約
+ * not null / unique / foreign key
+ *
+ * 主キーの作成
+ * create table test_db.test_table (
+ * key1 int(6),key2 int(6),PRIMARY key pk1(key1, key2));
+ * オートインクレメント
+ * インデックスが振られている必要がある(primaryキー等),１カラムのみ、defaultNG
+ * key1 int out_increment primary key
+ * テーブルの変更 (alter table)
+ * alter table テーブル名　add/drop/  カラム名(addならfirst,after カラム名)
+ * alter table modify カラム名　　or 性質(index primary key) 型など
  */
