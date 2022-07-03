@@ -205,4 +205,17 @@ $figure['key'] = $figure['key'] ?? 2;
  * テーブルの変更 (alter table)
  * alter table テーブル名　add/drop/  カラム名(addならfirst,after カラム名)
  * alter table modify カラム名　　or 性質(index primary key) 型など
+ *
+ * レコードの取得
+ * count(distinct 1)    distinctとすることで重複を省くことができる
+ * auto increment の初期化
+ * alter table test_db.mst_prefs auto_increment = 1;
+ *
+ * 条件句の表記法
+ * select * from test_db.txn_stocks
+ * where (product_id = 1 and shop_id = 1)or (product_id = 2 and shop_id = 2);
+ * 部分一致 or 特定の値を含む検索
+ * where name like '店%'    where name in ('店舗A','店舗B')
+ * 並び替えと取得レコードの指定
+ * where amount > 50 order by id desc limit 7 offset 1
  */
