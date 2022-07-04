@@ -218,4 +218,12 @@ $figure['key'] = $figure['key'] ?? 2;
  * where name like '店%'    where name in ('店舗A','店舗B')
  * 並び替えと取得レコードの指定
  * where amount > 50 order by id desc limit 7 offset 1
+ * レコードの追加、更新
+ * insert into name (column) values(addname) /update name set columns=change where=spot
+ * レコードの結合
+ * select * from talbe inner join table2 on table1.A = table2.B(共通項)
+ *
+ * トランザクション 一連のSQL処理を指す
+ * ACID特徴　　処理が全て成功か失敗が保証される原始性、聖オグ性が保たれる一貫性、処理が終わらないと外部から確認できない独立性、トランザクション後のデータはストレージ保持される永続性
+ * start transactionを宣言しないSQL処理文はautoでコミットされる設定がされている。
  */
