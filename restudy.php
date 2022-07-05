@@ -226,4 +226,13 @@ $figure['key'] = $figure['key'] ?? 2;
  * トランザクション 一連のSQL処理を指す
  * ACID特徴　　処理が全て成功か失敗が保証される原始性、聖オグ性が保たれる一貫性、処理が終わらないと外部から確認できない独立性、トランザクション後のデータはストレージ保持される永続性
  * start transactionを宣言しないSQL処理文はautoでコミットされる設定がされている。
+ * SQLが流れた分にはロックがかかり、コミットするまで別のトランザクションから編集することはできない
+ * truncate(レコードの削除)
+ * deleteとは異なり、where指定不可で一度行うとrollbackで元に戻せない
+ *
+ * システム変数
+ * localグローバルsession等　　select @@session.autocommit;で検索 set @@session.autocomit=0;で変更
+ * ユーザー定義変数
+ * select @s_name :=name from test.shop shere ms.id = @s_id;　  set @s_id=1;
+ * 上のように取得してきた値をユーザー変数に代入も可能。ただ、セッションを閉じるとリセットされる。
  */
