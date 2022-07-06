@@ -235,4 +235,8 @@ $figure['key'] = $figure['key'] ?? 2;
  * ユーザー定義変数
  * select @s_name :=name from test.shop shere ms.id = @s_id;　  set @s_id=1;
  * 上のように取得してきた値をユーザー変数に代入も可能。ただ、セッションを閉じるとリセットされる。
+ * ユーザー権限
+ * select user();   これで現在使用中のユーザーの権限情報を確認できる。
+ * grant content on database to username@connect
+ *       命令内容　　　　　　　データベースの種類　　ユーザー名@接続元(ローカルホストなど)
  */
