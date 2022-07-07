@@ -239,4 +239,6 @@ $figure['key'] = $figure['key'] ?? 2;
  * select user();   これで現在使用中のユーザーの権限情報を確認できる。
  * grant content on database to username@connect
  *       命令内容　　　　　　　データベースの種類　　ユーザー名@接続元(ローカルホストなど)
+ *
+ * PHPとDB
  */
