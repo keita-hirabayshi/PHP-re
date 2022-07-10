@@ -244,4 +244,15 @@ $figure['key'] = $figure['key'] ?? 2;
  * 例外処理
  * PHP処理にてエラーが発生するリスクがあるものは、tryで囲みcatch(Exception $e)等で出力する。
  * catchのエラーの種類を指定することで、取得したいエラーごとに分けて取得するような実装も可能
+ * SQLインジェクション
+ * 予期せぬ挙動を防ぐもの。prepare('SQL文')　→ bindvalue('型の設定')　→ execute,fetch(実行、値の取得)
+ * prepare statementでDBはSQLが来ると事前に準備する。(pre-compiled)
+ * 型を厳格に指定しない場合はexecu内で配列形式で定義づけるのが一般的
+ * bindvalue(':id',$shop_id,PDO::PRAM_INT) = execute([':id'=>$shop_id]);
+ * トランザクション
+ * 在庫数をAからBに移し替えるなど、データの不整合のリスクがある場合に用いる
+ * $conn->begintransaction にて開始する。
+ * try,catch
+ * 例外発生するとtryとcatchが存在する大元まで遡りエラーを検出する。
+ * そのため、大元のみにtry,catchを実装しエラー元を明確に特定することが大切。
  */
