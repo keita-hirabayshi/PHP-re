@@ -12,5 +12,6 @@ require_once 'config.php';
 </head>
 <body>
     <p>ジョゼと虎と魚たち</p>
+    <p>サマーウォーズ</p>
 </body>
 </html>
