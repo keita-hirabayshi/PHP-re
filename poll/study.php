@@ -15,4 +15,36 @@ function redirect($path){
 
 function get_url($path){
     return BASE_CONTEXT_PATH . trim($path,'/');
-} ?>
+}
+
+function route($rpath,$method){
+    try{
+
+        throw new Error();
+
+        if($rpath ===''){
+        $rpath = 'home';
+        }
+        $targetFile = SOURCE_BASE . "controllers/{$rpath}.php";
+
+        if(!file_exists($targetFile)){
+            require_once SOURCE_BASE . "../views/404.php";
+            return;
+        }
+        require_once $targetFile;
+
+        $fn = "\\controller\\{$rpath}\\{$method}";
+
+        $fn();
+
+    }catch(Throwable $e){
+        Msg::push(Msg::DEBUG,$e->getMessage());
+        Msg::push(Msg::ERROR,'なんかおかしいみたいです。');
+        require_once SOURCE_BASE . "../views/404.php";
+    }
+
+
+
+}
+
+ ?>
