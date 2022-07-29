@@ -39,7 +39,7 @@ function route($rpath,$method){
 
     }catch(Throwable $e){
         Msg::push(Msg::DEBUG,$e->getMessage());
-        Msg::push(Msg::ERROR,'なんかおかしいみたいです。');
+        Msg::push(Msg::ERROR,'なんかがおかしいみたいです。');
         require_once SOURCE_BASE . "../views/404.php";
     }
 
