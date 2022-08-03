@@ -9,4 +9,17 @@ h1 {
   }
 }
 /*# sourceMappingURL=style.css.map */
-s
+
+
+/* Bootstrapを用いた記載方法 */
+ $cBlack: gray;
+ $cBlack: black !default;
+ /* bootstrapでデフォルト設定すると、既存の設定に上書きされ自分好みにカスタマイズできる。 */
+
+ /* 豆知識　　　詳細度が同じ場合、最後に記述したものが結果となり上書きされる。 */
+
+
+$primary:purple;
+$body-bg:gray;
+
+@import "../../bootstrap/bootstrap.scss";
