@@ -1,0 +1,51 @@
+<body>
+    <div id="container">
+        <header class="container my-2">
+            <nav class="row align-items-center py-2">
+                <!-- d-flex + align-items-center の組み合わせで横並びn中央揃えが可能 -->
+                <a href="" class="col-md d-flex align-items-center mb-3 mb-md-0">
+                    <!--         col-mdと記載することで、横幅が768px以上の時にアンケートロゴと登録、ログイン部分が横に並ぶようになる。 -->
+                    <img width="50" class="mr-2" src="images/logo.svg" alt="みんなのアンケート　サイトロゴ">
+                    <span class="h2 font-weight-bold mb-1">みんなのアンケート</span>
+                </a>
+                <!-- col-mdでは、flex-growが１となり横に伸びるが、col-md-autoとする場合flex-growは０となり横に伸びない。　→ その結果、要素が左右に配置される -->
+                <div class="col-md-auto">
+                    <a href=""  class="btn btn-primary mr-2">登録</a>
+                    <a href="">ログイン</a>
+                </div>
+            </nav>
+        </header>
+        <main class="container py-3">
+            <!-- sr-onlyクラスをつけた要素は表示はされないものの、google検索にてどのようなサイトか判定されるときに目印となる -->
+            <h1 class="sr-only">ログイン</h1>
+            <div class="mt-5">
+                <div class="text-center mb-4">
+                    <img width="65" src="images/logo.svg" alt="みんなのアンケートサイトロゴ" >
+                </div>
+                <div class="login-form bg-white p-4 shadow-sm mx-auto rounded">
+                    <form action="">
+                        <div class="form-group">
+                            <label for="">ユーザーID</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="">パスワード</label>
+                            <input type="password" class="form-control">
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <a href="">アカウント登録</a>
+                            </div>
+                            <div>
+                                <input type="submit" value="ログイン" class="btn btn-primary">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <footer class="text-center p-3">
+            <span class="text-muted">&copy; CodeMafia</span>
+        </footer>
+    </div>
+</body>
