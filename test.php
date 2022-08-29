@@ -44,3 +44,26 @@ $result = tc(12,1000,0.1);
 $figure = [
     'key' => 7
 ];
+
+// 正規表現については問２のみ復習する。
+$text ='001-0002';
+if(preg_match("/^[0-9]{3}-[0-9]{4}$/",$text,$result)){
+    echo '検索成功';
+    print_r($result);
+}else{
+    echo '検索失敗';
+}
+
+if(preg_match("/^[\w\.\-]+@[\w\-]+\.[\w\.\-]+$/",$letter,$result)){
+    echo '検索成功';
+    print_r($result);
+}else{
+    echo '検索失敗';
+}
+
+if(preg_match("/<h[1-6]>(.+)<\/h[1-6]]>/",$html,$result)){
+    echo '検索成功';
+    print_r($result);
+}else{
+    echo '検索失敗';
+}
