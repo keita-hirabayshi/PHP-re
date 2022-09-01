@@ -286,3 +286,19 @@ if(preg_match("/<h[1-6]>(.+)<\/h[1-6]]>/",$html,$result)){
 
     クラス  オブジェクトを生成するための雛形
 -->
+<!-- 値を配列形式で渡す -->
+<form action="post.php" method="POST">
+    <div>名前：
+        <input type="text" name="person[name]">
+    </div>
+    <div>年齢：
+        <input type="num" name="person[age]">
+    </div>
+    <div>性別：
+        <input type="text" name="person[sex]">
+    </div>
+    <div>
+        <input type="hidden" name="person[human]" value="humanity">
+    </div>
+    <input type="submit">
+</form>
