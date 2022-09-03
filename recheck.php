@@ -302,3 +302,5 @@ if(preg_match("/<h[1-6]>(.+)<\/h[1-6]]>/",$html,$result)){
     </div>
     <input type="submit">
 </form>
+<!-- httpでのデータの保持 -->
+<!-- cookieの場合  setcookieにてブラウザ毎に保持。cookieの取得範囲はURL設定を変えることで可能 -->
