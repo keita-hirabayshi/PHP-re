@@ -274,6 +274,82 @@ if(preg_match("/<h[1-6]>(.+)<\/h[1-6]]>/",$html,$result)){
 }
 ?>
 
+// cookieとsessionの理解度チェック      基本はsessionしか使わない
+// $vcount = 1;
+// if(isset($_COOKIE['VISIT_COUNT'])){
+//     $vcount = $_COOKIE['VISIT_COUNT'] + 1;
+// }else{
+//     setcookie('VISIT_COUNT',$vcount);
+// }
+// echo "訪問回数は{$vcount}回です";
+// session_start();
+// echo "訪問回数は{$_SESSION['VISIT_COUNT']}回目です";
+// if(isset($_SESSION['VISIT_COUNT'])){
+//     $_SESSION['VISIT_COUNT'] ++ ;
+// }else{
+//     $_SESSION['VISIT_COUNT'] = 1;
+// }
+session_start();
+$self_url =$_SERVER['PHP_SELF'];
+?>
+<?php
+if(isset($_POST['text'])){
+    if($_POST['type'] ==='create'){
+        $_SESSION['todos'][] = $_POST['text'];
+        echo "タスク[{$_POST['text']}]が追加されました";
+    }elseif($_POST['type'] ==='delete'){
+        array_splice($_SESSION['todos'],$_POST['id'],1);
+        echo "タスク[{$_POST['text']}]が削除されました";
+    }elseif($_POST['type'] ==='update')
+        $_SESSION['todos'][$_POST['id']] = $_POST['text'];
+        echo "タスク[{$_POST['text']}]が更新されました";
+}
+
+if(empty($_SESSION['todos'])){
+    $_SESSION['todos'] = [];
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <title>Document</title>
+</head>
+<body>
+    <form method='POST' action="<?php echo $self_url; ?>">
+
+        <input type="text" name="text">
+        <input type="submit" name="type" value="create">
+    </form>
+
+    <ul>
+        <?php for($i=0; $i<count($_SESSION['todos']); $i++ ): ?>
+        <li>
+            <form action="<?php echo $self_url; ?>" method='POST'>
+            <input type="hidden" name="id" value="<?php echo $i ;?>">
+            <input type="text" name ='text' value="<?php echo $_SESSION['todos'][$i]; ?>">
+            <input type="submit" name="type" value="delete">
+            <input type="submit" name="type" value="update">
+            </form>
+        </li>
+
+        <?php endfor; ?>
+    </ul>
+</body>
+</html>
+
+
+
+
+
+
+
+
 <!--
     issetとempty
     連想配列
@@ -285,22 +361,9 @@ if(preg_match("/<h[1-6]>(.+)<\/h[1-6]]>/",$html,$result)){
     parent,self,static  (abstractは継承先専用を示す)
 
     クラス  オブジェクトを生成するための雛形
+    httpとステートレス
+    webサーバー document-rootはwebサーバー稼働範囲
+
+    検索について
+    command + f  特定のキーワドを検索可能
 -->
-<!-- 値を配列形式で渡す -->
-<form action="post.php" method="POST">
-    <div>名前：
-        <input type="text" name="person[name]">
-    </div>
-    <div>年齢：
-        <input type="num" name="person[age]">
-    </div>
-    <div>性別：
-        <input type="text" name="person[sex]">
-    </div>
-    <div>
-        <input type="hidden" name="person[human]" value="humanity">
-    </div>
-    <input type="submit">
-</form>
-<!-- httpでのデータの保持 -->
-<!-- cookieの場合  setcookieにてブラウザ毎に保持。cookieの取得範囲はURL設定を変えることで可能 -->
