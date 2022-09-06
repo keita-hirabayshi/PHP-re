@@ -363,7 +363,14 @@ if(empty($_SESSION['todos'])){
     クラス  オブジェクトを生成するための雛形
     httpとステートレス
     webサーバー document-rootはwebサーバー稼働範囲
+    redirect    ブラウザ上にて処理を実行。                                          記載場所 .htaccess
+    rewrite     サーバー側がwebサーバー内の設定ファイルhttp.conf 内の処理を呼ぶ         　記載場所　　httpd.conf
 
-    検索について
-    command + f  特定のキーワドを検索可能
+
+
+
+
+
+    検索について        command + f  特定のキーワドを検索可能
+    ターミナル          ctrl + shift + @
 -->
