@@ -365,7 +365,7 @@ if(empty($_SESSION['todos'])){
     webサーバー document-rootはwebサーバー稼働範囲
     redirect    ブラウザ上にて処理を実行。                                          記載場所 .htaccess
     rewrite     サーバー側がwebサーバー内の設定ファイルhttp.conf 内の処理を呼ぶ         　記載場所　　httpd.conf
-
+　　→  rewritebase 読み込み先ファイルのパスの共通部分を省略できる rewritecond　rewriteで読み込む条件を絞り込める　
 
 
 
