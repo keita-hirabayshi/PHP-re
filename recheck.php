@@ -344,7 +344,31 @@ if(empty($_SESSION['todos'])){
 </html>
 
 
+<!-- リライト       理解度チェック
+# 問１：
+# .htmlで来たリクエストを同じファイル名のphpに転送してください。
+#
+# 例）
+# http://localhost:8888/apache/rewrite-test/file1.html
+# -> http://localhost:8888/apache/rewrite-test/file1.php
+RewriteEngine On
+RewriteBase /apache/rewrite-test/
+RewriteRule /?rewrite-test/(.+)\.html$ $1.php
 
+# 問２：
+# rewrite-test/sub1内のファイルに対してリクエストを送
+# 信した際に同じファイル名でsub2内に存在するファイルは
+# sub2のものを表示してください。存在しなければ、sub1
+# 内のファイルを表示してください。
+# 例）
+# http://localhost:8888/apache/rewrite-test/sub1/file1.html
+# -> http://localhost:8888/apache/rewrite-test/sub2/file1.html
+#
+# http://localhost:8888/apache/rewrite-test/sub1/file2.html
+# -> Internal Redirect は行わない。
+RewriteBase /apache/rewrite-test/
+RewriteCond /Applications/MAMP/htdocs/fullstack-webdev/070_Apacheの基礎/rewrite-test/sub2/$1 !-f [OR]
+RewriteRule /?rewrite-test/sub1/(.+\.html)$ /sub2/$1 [R] -->
 
 
 
@@ -365,7 +389,7 @@ if(empty($_SESSION['todos'])){
     webサーバー document-rootはwebサーバー稼働範囲
     redirect    ブラウザ上にて処理を実行。                                          記載場所 .htaccess
     rewrite     サーバー側がwebサーバー内の設定ファイルhttp.conf 内の処理を呼ぶ         　記載場所　　httpd.conf
-　　→  rewritebase 読み込み先ファイルのパスの共通部分を省略できる rewritecond　rewriteで読み込む条件を絞り込める　
+    →  rewritebase 読み込み先ファイルのパスの共通部分を省略できる rewritecond　rewriteで読み込む条件を絞り込める
 
 
 
