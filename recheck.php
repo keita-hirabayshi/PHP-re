@@ -394,7 +394,9 @@ RewriteRule /?rewrite-test/sub1/(.+\.html)$ /sub2/$1 [R] -->
     →  ブラウザで保持したキャッシュを送信し、サーバー側と同じならsameと返し、ブラウザ所有のキャッシュが読まれる。URLに値を付与することで、新規にキャッシュが作成される(ハードリフレッシュと同じ)。
     keepalive 　　　　ブラウザとサーバー間の接続（Onにすると特定の処理数を行うまで接続が保持される。）
 
-
+    DB操作
+    DBの作成や削除 create/drop
+    テーブルの一部追加、修正、削除　　add/modify/drop alter table DB名.table名　add colum val varchar(19) not null;
 
 
 
