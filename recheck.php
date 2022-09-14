@@ -398,6 +398,7 @@ RewriteRule /?rewrite-test/sub1/(.+\.html)$ /sub2/$1 [R] -->
     DBの作成や削除 create/drop
     テーブルの一部追加、修正、削除　　add/modify/drop alter table DB名.table名　add colum val varchar(19) not null;
     正規化
+    外部キー制約と実践的なテーブル定義 (txn → 変化の激しいもの  mst → ほぼ固定のもの)
 
 
     検索について        command + f  特定のキーワドを検索可能
