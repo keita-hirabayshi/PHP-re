@@ -399,7 +399,12 @@ RewriteRule /?rewrite-test/sub1/(.+\.html)$ /sub2/$1 [R] -->
     テーブルの一部追加、修正、削除　　add/modify/drop alter table DB名.table名　add colum val varchar(19) not null;
     正規化
     外部キー制約と実践的なテーブル定義 (txn → 変化の激しいもの  mst → ほぼ固定のもの)
-    データの挿入と条件句による検索
+    データの挿入と条件句による検索(order by  limit offsetによる設定)
+
+
+
+
+
 
     検索について        command + f  特定のキーワドを検索可能
     ターミナル          ctrl + shift + @
