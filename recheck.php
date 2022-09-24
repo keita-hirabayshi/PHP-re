@@ -400,7 +400,7 @@ RewriteRule /?rewrite-test/sub1/(.+\.html)$ /sub2/$1 [R] -->
     正規化
     外部キー制約と実践的なテーブル定義 (txn → 変化の激しいもの  mst → ほぼ固定のもの)
     データの挿入と条件句による検索(order by  limit offsetによる設定)
-    データの結合、transaction ACID特性
+    データの結合、transaction ACID特性 ユーザー定義関数　文字コード
 
 
 
