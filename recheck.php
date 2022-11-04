@@ -414,6 +414,7 @@ RewriteRule /?rewrite-test/sub1/(.+\.html)$ /sub2/$1 [R] -->
     　ここまでの内容を１から見直し
     　　index.phpを基点とした、各ファイルの読み込み処理。
     　　login,registerでの文字形式と文字数によるふるい、DBデータ都の照合のち処理実行
+    　　メッセージデータの保持、ログアウト機能の導入
 
 
 
