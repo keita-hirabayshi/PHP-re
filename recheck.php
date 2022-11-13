@@ -417,6 +417,7 @@ RewriteRule /?rewrite-test/sub1/(.+\.html)$ /sub2/$1 [R] -->
     　　login,registerでの文字形式と文字数によるふるい、DBデータ都の照合のち処理実行
     　　メッセージデータの保持、ログアウト機能の導入
        sessionの仕組みをおさらい
+       bootstrapの仕組みを次戦を交えて復習
 
 
 
