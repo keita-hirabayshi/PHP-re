@@ -420,6 +420,9 @@ RewriteRule /?rewrite-test/sub1/(.+\.html)$ /sub2/$1 [R] -->
        sessionの仕組みをおさらい
        bootstrapの仕組みを次戦を交えて復習
 
+    オリジナルアプリ　タスク管理
+    目的　タスクを見える化
+
 
 
 
